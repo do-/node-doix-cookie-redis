@@ -1,0 +1,23 @@
+{
+  "name": "doix-http-cookie-redis",
+  "version": "0.0.1",
+  "description": "doix http cookie based sessions using redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/do-/node-doix-http-cookie-redis.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/do-/node-doix-http-cookie-redis/issues"
+  },
+  "homepage": "https://github.com/do-/node-doix-http-cookie-redis#readme",
+  "dependencies": {
+    "doix-http": "^0.0.11",
+    "redis": "^4.6.5"
+  }
+}
