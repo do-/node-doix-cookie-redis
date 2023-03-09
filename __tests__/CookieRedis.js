@@ -8,8 +8,7 @@ const c = new CookieRedis ({
 	ttl: 60,
 	prefix: 'session_',
 	db: {
-		host: "127.0.0.1",
-		port: 6379,
+		url: process.env.REDIS_CONN_STRING
 	},
 	getRaw: () => SID
 })
@@ -27,17 +26,13 @@ const JOB = {
 	}}
 }
 
-let db = null
-
-beforeAll(async () => {
-	db = await c.getDb ()
-})
-
 test ('save', async () => {
 
 	await c.save (JOB)
 
 	const key = c.prefix + SID
+
+	const db = await c.getDb ()
 
 	const user = await db.get (key)
 
@@ -45,5 +40,8 @@ test ('save', async () => {
 })
 
 afterAll(async () => {
-	await db.disconnect ()
+
+	const db = await c.getDb ()
+
+	if (db && db.isOpen) await db.disconnect ()
 })
