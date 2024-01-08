@@ -31,3 +31,6 @@ jobs:
         run: npm run test-ci
         env:
           REDIS_CONN_STRING: 'redis://redis:6379'
+
+      - name: Generating coverage badges
+        uses: jpb06/jest-badges-action@latest
