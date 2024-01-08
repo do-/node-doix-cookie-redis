@@ -1,10 +1,24 @@
 {
   "name": "doix-http-cookie-redis",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "doix http cookie based sessions using redis",
   "main": "index.js",
+  "files": ["/lib", "/badges"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test-ci": "jest --ci --coverage"
+  },
+  "jest": {
+	"collectCoverageFrom": [
+		"lib/**/*.js"
+	],
+	"coverageReporters": ["clover", "json", "lcov", "text", "json-summary"],
+  	"verbose": false,
+  	"testPathIgnorePatterns": [
+  		"/node_modules/",
+  		"/__tests__/data",
+  		"/__tests__/lib"
+  	]
   },
   "repository": {
     "type": "git",
@@ -16,8 +30,13 @@
     "url": "https://github.com/do-/node-doix-http-cookie-redis/issues"
   },
   "homepage": "https://github.com/do-/node-doix-http-cookie-redis#readme",
+  "peerDependencies": {
+    "doix-http": "^1.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
   "dependencies": {
-    "doix-http": "^0.0.11",
-    "redis": "^4.6.5"
+    "redis": "^4.6.12"
   }
 }
