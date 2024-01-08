@@ -1,0 +1,33 @@
+name: e2e tests
+on: push
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    container: library/node:16-alpine
+
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: env
+        run: env
+
+      - name: Run tests
+        run: npm run test-ci
+        env:
+          REDIS_CONN_STRING: 'redis://redis:6379'
