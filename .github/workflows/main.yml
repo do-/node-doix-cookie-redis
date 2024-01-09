@@ -4,11 +4,14 @@ on: push
 jobs:
   e2e:
     runs-on: ubuntu-latest
-    container: library/node:16-alpine
+    container:
+      image: timbru31/node-alpine-git:18
+      # https://github.com/actions/runner/issues/2033#issuecomment-1598547465
+      options: --user 1001
 
     services:
       redis:
-        image: redis
+        image: redis:7-bookworm
         ports:
           - 6379:6379
         options: >-
