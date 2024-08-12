@@ -1,5 +1,14 @@
 const {Application, ConsoleLogger} = require ('doix')
 
+const {Writable} = require ('stream')
+const winston = require ('winston')
+const logger = winston.createLogger({
+	transports: [
+//	  new winston.transports.Console (),
+	  new winston.transports.Stream ({stream: new Writable ({write(){}})})
+	]
+})
+
 const BackService = require ('./BackService.js')
 
 module.exports = class extends Application {
@@ -8,12 +17,8 @@ module.exports = class extends Application {
 					
 	    super ({
 	    	
-	    	logger: ConsoleLogger.DEFAULT,
-/*	    
+	    	logger,
 
-			pools: {
-			},
-*/
 			modules: {
 				dir: {
 					root: [__dirname],

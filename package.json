@@ -1,6 +1,6 @@
 {
   "name": "doix-http-cookie-redis",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "doix http cookie based sessions using redis",
   "main": "index.js",
   "files": ["/lib", "/badges"],
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/do-/node-doix-http-cookie-redis#readme",
   "peerDependencies": {
-    "doix-http": "^1.0.5"
+    "doix-http": "^1.0.8"
   },
   "devDependencies": {
     "jest": "^29.3.1"

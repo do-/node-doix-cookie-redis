@@ -8,6 +8,8 @@ module.exports = class extends WebService {
 	    
 			methods: ['POST'],
 
+			name: 'webBackEnd',
+
 			reader: new HttpParamReader ({
 				from: {
 					searchParams: true,

@@ -4,6 +4,15 @@ const {ConsoleLogger} = require ('doix')
 
 let port = 8010
 
+const {Writable} = require ('stream')
+const winston = require ('winston')
+const logger = winston.createLogger({
+	transports: [
+//	  new winston.transports.Console (),
+	  new winston.transports.Stream ({stream: new Writable ({write(){}})})
+	]
+})
+
 module.exports = {
 
 	getResponse: async function (o) {
@@ -19,7 +28,7 @@ module.exports = {
 
 		try {
 
-			var r = new HttpRouter ({listen, logger: ConsoleLogger.DEFAULT})
+			var r = new HttpRouter ({name: 'httpEndPoint', listen, logger})
 			
 			for (const s of Array.isArray (service) ? service : [service]) r.add (s)
 
