@@ -39,7 +39,7 @@ After that for each [`job`](https://github.com/do-/node-doix/wiki/Job) produced 
 # Options
 | Name | Type | Default | Description | Note
 | ---- | -- | -- | -- | -- |
-| `name` | String | `'sid'` | name of the cookie |
-| `ttl` | int | 60 | time to live, in minutes | multiplied by 60, passed to the Redis [set](https://redis.io/commands/set/) command as the `EX` option
+| `name` | String |  | name of the cookie |
+| `ttl` | int |  | time to live, in minutes | multiplied by 60, passed to the Redis [set](https://redis.io/commands/set/) command as the `EX` option
 | `db` | String | `undefined` | Redis connection name | the Redis [connection](https://github.com/redis/node-redis) must be available as `this [options.db]` in a [Job](https://github.com/do-/node-doix/wiki/Job) instance
 | `prefix` | String |  `''` | prepended to the session ID to form the key for Redis cache |
