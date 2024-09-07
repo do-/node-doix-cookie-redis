@@ -1,6 +1,5 @@
 const http = require ('http')
-const {HttpRouter} = require ('doix-http')
-const {ConsoleLogger} = require ('doix')
+const {HttpRouter} = require ('protocol-agnostic-router')
 
 let port = 8010
 

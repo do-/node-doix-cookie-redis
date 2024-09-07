@@ -40,7 +40,7 @@ const newSvc = app => {
 
 	const svc = app.createBackService ()
 
-	new CookieRedis ({ttl: 10, db: DB_NAME, prefix: PREFIX}).plugInto (svc)
+	new CookieRedis ({ttl: 10, name: 'sid', db: DB_NAME, prefix: PREFIX}).plugInto (svc)
 
 	return svc
 
@@ -54,7 +54,7 @@ async function getResponseFromWebService (svc, path, requestOptions, port) {
 
 test ('constructor', async () => {
 
-	const c = new CookieRedis ({})
+	const c = new CookieRedis ({name: 'sid', ttl: 1})
 
 	expect (c.prefix).toBe ('')
 

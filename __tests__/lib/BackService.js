@@ -1,4 +1,4 @@
-const {WebService, HttpParamReader, HttpResultWriter} = require ('doix-http')
+const {WebService} = require ('doix-http')
 
 module.exports = class extends WebService {
 
@@ -9,13 +9,6 @@ module.exports = class extends WebService {
 			methods: ['POST'],
 
 			name: 'webBackEnd',
-
-			reader: new HttpParamReader ({
-				from: {
-					searchParams: true,
-					bodyString: s => JSON.parse (s),
-				}
-			}),
 
 			on: {
 
@@ -31,10 +24,6 @@ module.exports = class extends WebService {
 
 			},
 
-			writer: new HttpResultWriter ({
-
-				type: 'application/json',
-
 				stringify: content => {
 				
 					return JSON.stringify ({
@@ -42,29 +31,7 @@ module.exports = class extends WebService {
 						content, 
 					})
 				
-				}
-
-			}),
-
-			dumper: new HttpResultWriter ({
-
-				code: err =>
-
-					/^[1-5]\d\d$/.test (err.statusCode) ? err.statusCode :
-
-					500,
-
-				type: 'application/json',
-
-				stringify: (err, job) => JSON.stringify (
-					{
-						success: false,
-						id: job.uuid,
-						dt: new Date ().toJSON ()
-					}
-				)
-				
-			}),
+				},
 			
 			...o
 
